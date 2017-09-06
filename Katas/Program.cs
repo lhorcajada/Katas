@@ -10,7 +10,7 @@ namespace Katas
     {
         static void Main(string[] args)
         {
-            HolaDonRamon holaDonRamon = new HolaDonRamon();
+            HolaDonRamon holaDonRamon = new HolaDonRamon(new ProveedorEscritura());
             holaDonRamon.ImprimirFrasesDistintas();
             Console.ReadLine();
 

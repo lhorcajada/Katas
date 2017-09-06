@@ -8,6 +8,11 @@ namespace Katas
 {
     public class HolaDonRamon
     {
+        private readonly IProveedorEscritura _proveedorEscritura;
+        public HolaDonRamon(IProveedorEscritura proveedorEscritura)
+        {
+            _proveedorEscritura = proveedorEscritura;
+        }
         public void ImprimirFrasesDistintas()
         {
             string[] palabras = new[] { "Hola", "Don", "Ramón" };
@@ -80,7 +85,7 @@ namespace Katas
         private void ImprimirLaFraseEnOrdenDePalabras(string[] palabras)
         {
             string frase = ObtenerFrase(palabras);
-            Console.WriteLine(frase);
+            _proveedorEscritura.EscribirLinea(frase);
         }
 
         private string ObtenerFrase(string[] palabrasOrdenadasAleatoriamente)
