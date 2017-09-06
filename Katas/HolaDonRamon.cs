@@ -13,9 +13,8 @@ namespace Katas
         {
             _proveedorEscritura = proveedorEscritura;
         }
-        public void ImprimirFrasesDistintas()
+        public List<string[]> ObtenerGruposPalabras(string[] palabras)
         {
-            string[] palabras = new[] { "Hola", "Don", "Ramón" };
             string[] palabrasOrdenadasAleatoriamente=null;
             List<string[]> gruposPalabras = new List<string[]>();
             for (int x = 0; x < 6; x++)
@@ -26,11 +25,19 @@ namespace Katas
                     if(!YaExisteOrdenDePalabras(gruposPalabras,palabrasOrdenadasAleatoriamente))
                     {
                         gruposPalabras.Add(palabrasOrdenadasAleatoriamente);
-                        ImprimirLaFraseEnOrdenDePalabras(palabrasOrdenadasAleatoriamente);
                         palabrasOrdenadasAleatoriamente = new string[palabras.Count()];
                     }
                 }
                 while (YaExisteOrdenDePalabras(gruposPalabras,palabrasOrdenadasAleatoriamente));
+            }
+            return gruposPalabras;
+        }
+        public void ImprimirFrases(List<string[]> gruposPalabras)
+        {
+            foreach (var grupo in gruposPalabras)
+            {
+                string frase = ObtenerFrase(grupo);
+                _proveedorEscritura.EscribirLinea(frase);
             }
         }
         private string[] OrdenarArrayAleatoriamente(string[] palabras)
@@ -82,11 +89,7 @@ namespace Katas
             
             return false;
         }
-        private void ImprimirLaFraseEnOrdenDePalabras(string[] palabras)
-        {
-            string frase = ObtenerFrase(palabras);
-            _proveedorEscritura.EscribirLinea(frase);
-        }
+  
 
         private string ObtenerFrase(string[] palabrasOrdenadasAleatoriamente)
         {

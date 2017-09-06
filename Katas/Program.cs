@@ -11,7 +11,11 @@ namespace Katas
         static void Main(string[] args)
         {
             HolaDonRamon holaDonRamon = new HolaDonRamon(new ProveedorEscritura());
-            holaDonRamon.ImprimirFrasesDistintas();
+            string[] palabras = new[] { "Hola", "Don", "Ramón" };
+
+            var gruposPalabras = holaDonRamon.ObtenerGruposPalabras(palabras);
+            holaDonRamon.ImprimirFrases(gruposPalabras);
+
             Console.ReadLine();
 
         }
