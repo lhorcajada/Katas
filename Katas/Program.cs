@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Katas.KataHolaDonRamon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +11,15 @@ namespace Katas
     {
         static void Main(string[] args)
         {
-            HolaDonRamon holaDonRamon = new HolaDonRamon(new ProveedorEscritura());
             string[] palabras = new[] { "Hola", "Don", "Ramón" };
 
-            var gruposPalabras = holaDonRamon.ObtenerGruposPalabras(palabras);
-            holaDonRamon.ImprimirFrases(gruposPalabras);
-
-            Console.ReadLine();
+            ManejadorPalabra manejadorPalabra = new ManejadorPalabra();
+            var gruposDeSeisPalabras = manejadorPalabra.ObtenerGruposDeSeisPalabras(palabras);
+            var proveedorEscritura = new ProveedorEscritura();
+            ManejadorFrase frase = new ManejadorFrase(proveedorEscritura);
+            frase.ImprimirFrases(gruposDeSeisPalabras);
+            frase.ImprimirFrase("Pulse la tecla espaciadora para salir.");
+            proveedorEscritura.EsperaPulsacionSpacebarParaSalir();
 
         }
     }

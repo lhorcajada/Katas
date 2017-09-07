@@ -3,11 +3,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Katas;
 using System.Linq;
 using System.Collections.Generic;
+using Katas.KataHolaDonRamon;
 
 namespace KatasTest
 {
     [TestClass]
-    public class HolaDonRamonTest
+    public class ManejadorPalabrasTest
     {
         [TestMethod]
         public void CrearFrasesConTresPalabras_TodasDistintas()
@@ -27,8 +28,8 @@ namespace KatasTest
         }
         private void ComprobarFrasesDistintas(string[] palabras)
         {
-            HolaDonRamon holadonRamon = new HolaDonRamon(new ProveedorEscritura());
-            var gruposPalabras = holadonRamon.ObtenerGruposPalabras(palabras);
+            ManejadorPalabra holadonRamon = new ManejadorPalabra();
+            var gruposPalabras = holadonRamon.ObtenerGruposDeSeisPalabras(palabras);
             List<string> gruposConcatenados = new List<string>();
 
             ConcatenarGruposPalabras(gruposPalabras, gruposConcatenados);
